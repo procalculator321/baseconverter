@@ -1,10 +1,10 @@
 // index.js
-let pending = '';
-let result = 0;
-let hold = null;
-let oper = null;
-let anybasenumber = null;
-let thebase = null;
+pending = '';
+var result = 0;
+var hold = null;
+var oper = null;
+var anybasenumber = null;
+var thebase = null;
 function updateValues() {
   document.getElementById('res').innerText = result.toString(document.getElementById("thebase").value);
   document.getElementById('pend').innerText = pending.toString(document.getElementById("thebase").value);
