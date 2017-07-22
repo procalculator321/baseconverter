@@ -1,14 +1,22 @@
 // index.js
-let pending = '0';
+let pending = '';
 let result = 0;
 let hold = null;
 let oper = null;
+let anybasenumber = null;
+let thebase = null;
 function updateValues() {
-  document.getElementById('res').innerText = String(result);
-  document.getElementById('pend').innerText = String(pending);
-  document.getElementById('holding').innerText = String(hold);
-  document.getElementById('op').innerText = String(oper);
+  document.getElementById('res').innerText = result.toString(document.getElementById("thebase").value);
+  document.getElementById('pend').innerText = pending.toString(document.getElementById("thebase").value);
+  if(hold != null) {
+    document.getElementById('holding').innerText = hold.toString(document.getElementById("thebase").value);
+  }
+  if(oper != null) {
+    document.getElementById('op').innerText = oper.toString();
 }
+
+}
+updateValues();
 
 
 document.getElementById('one').onclick = function() {
@@ -90,6 +98,13 @@ document.getElementById('division').onclick = function() {
   updateValues();
 
 }
+document.getElementById('convertbase').onclick = function() {
+  pending = String(parseInt(document.getElementById("anybasenumber").value, document.getElementById("thebase").value));
+console.log("convertbase");
+  updateValues();
+
+}
+
 
 document.getElementById('equals').onclick = function() {
   pending = Number(pending);
@@ -102,4 +117,13 @@ document.getElementById('equals').onclick = function() {
   hold = null;
   oper = null;
   updateValues();
+}
+document.getElementById('reset').onclick = function() {
+  pending = ''
+  holding = null
+  oper = null
+  result = 0;
+
+  updateValues();
+
 }
