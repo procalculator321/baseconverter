@@ -1,1 +1,20 @@
 /*index.css */
+/*oswald, Raleway, Roboto slab*/
+body {
+  background-color: rgb(0, 0, 255);
+}
+
+#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
+  color: red;
+  font-family: sans-serif;
+}
+#zero, #addition, #subtraction {
+  color: blue;
+}
+#pend, #holding, #res, #op {
+font-family: 'Roboto Slab', serif;
+border: 1.5px solid powderblue;
+}
+.numbutton {
+  width: 50px; 
+}

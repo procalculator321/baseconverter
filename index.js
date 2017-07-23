@@ -18,7 +18,27 @@ function updateValues() {
 }
 updateValues();
 
+var buttonmaker = function(base) {
+  var buttonHTML = '';
+  var i = 0;
+  while(i < base) {
+    var num = i.toString(base);
+    buttonHTML = buttonHTML + '<button class="numbutton" id="num'+num+'" onclick="numpresser(\''+num+'\')">'+num+'</button>';
+if(i%3===2) {
+  buttonHTML = buttonHTML + '<br>';
+}
+    i = i+1;
 
+  }
+
+
+  document.getElementById("buttons").innerHTML=buttonHTML;
+}
+var numpresser = function(num) {
+  pending = pending + num;
+  updateValues();
+}
+/*
 document.getElementById('one').onclick = function() {
 pending = pending + 1;
 updateValues();
@@ -68,7 +88,7 @@ document.getElementById('zero').onclick = function() {
   pending = pending + 0;
   updateValues();
 
-}
+}*/
 document.getElementById('addition').onclick = function() {
   hold = Number(pending);
   pending = '0'
@@ -99,15 +119,16 @@ document.getElementById('division').onclick = function() {
 
 }
 document.getElementById('convertbase').onclick = function() {
-  pending = String(parseInt(document.getElementById("anybasenumber").value, document.getElementById("thebase").value));
+  pending = document.getElementById("anybasenumber").value;
 console.log("convertbase");
+buttonmaker(parseInt(document.getElementById("thebase").value, 10))
   updateValues();
 
 }
 
 
 document.getElementById('equals').onclick = function() {
-  pending = Number(pending);
+  pending = parseInt((pending), document.getElementById("thebase").value);
   if(hold === null || oper === null) return;
   else if (oper === '+')  result = hold + pending;
   else if (oper === '-') result = hold - pending;

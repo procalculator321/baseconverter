@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>app</title>
+<title>baseconverterapp</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<link rel="stylesheet" href="index.css" />
 </head>
 <body>
-<p>pending : <span id="pend">1</span></p>
 <p>Holding number : <span id="holding">1</span></p>
-<p>Result : <span id="res">1</span></p>
+<p>Result in chosen base : <span id="res">1</span></p>
+<p>number in base 10 : <span id="pend">1</span></p>
 <p>Operator : <span id="op">1</span></p>
-<button id="one">1</button>
-<button id="two">2</button>
-<button id="three">3</button>
+<hr/>
+<div id="buttons">
+
+</div>
 <br/>
-<button id="four">4</button>
-<button id="five">5</button>
-<button id="six">6</button>
 <br/>
-<button id="seven">7</button>
-<button id="eight">8</button>
-<button id="nine">9</button>
-<br/>
-<button id="zero">0</button>
 <button id="addition">+</button>
 <button id="subtraction">-</button>
 <button id="multiplication">x</button>
 <button id="division">/</button>
 <button id="equals">=</button>
 <button id="reset">reset</button>
-<button id="convertbase">anybasenumber</button>
-<button id="numberbase">numberbase</button>
+<button id="convertbase">adjust for base</button>
+<br>
+<br>
+<hr/>
 <br>
 <input type="text" id="anybasenumber">number</input>
 <input type="text" value="10" id="thebase">numberbase</input>
