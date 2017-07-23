@@ -38,57 +38,14 @@ var numpresser = function(num) {
   pending = pending + num;
   updateValues();
 }
-/*
-document.getElementById('one').onclick = function() {
-pending = pending + 1;
-updateValues();
 
-}
-document.getElementById('two').onclick = function() {
-  pending = pending + 2;
+document.getElementById('decimal').onclick = function() {
+  hold = Number(pending);
+  oper = 'decimal'
   updateValues();
 
 }
-document.getElementById('three').onclick = function() {
-  pending = pending + 3;
-  updateValues();
 
-}
-document.getElementById('four').onclick = function() {
-  pending = pending + 4;
-  updateValues();
-
-}
-document.getElementById('five').onclick = function() {
-  pending = pending + 5;
-  updateValues();
-
-}
-document.getElementById('six').onclick = function() {
-  pending = pending + 6;
-  updateValues();
-
-}
-document.getElementById('seven').onclick = function() {
-  pending = pending + 7;
-  updateValues();
-
-}
-document.getElementById('eight').onclick = function() {
-  pending = pending + 8;
-  updateValues();
-
-}
-document.getElementById('nine').onclick = function() {
-  pending = pending + 9;
-  updateValues();
-
-}
-document.getElementById('zero').onclick = function() {
-  pending = pending + 0;
-  updateValues();
-
-}*/
 document.getElementById('addition').onclick = function() {
   hold = Number(pending);
   pending = '0'
@@ -116,6 +73,65 @@ document.getElementById('division').onclick = function() {
   pending = '0'
   oper = '/'
   updateValues();
+}
+  document.getElementById('square').onclick = function() {
+hold = Number(pending);
+    oper = 'square'
+    updateValues();
+
+}
+document.getElementById('cube').onclick = function() {
+hold = Number(pending);
+  oper = 'cube'
+  updateValues();
+
+}
+document.getElementById('squareroot').onclick = function() {
+hold = Number(pending);
+  oper = 'squareroot'
+  updateValues();
+
+}
+document.getElementById('cuberoot').onclick = function() {
+hold = Number(pending);
+  oper = 'cuberoot'
+  updateValues();
+
+}
+document.getElementById('sin').onclick = function() {
+hold = Number(pending);
+  oper = 'sin'
+  updateValues();
+
+}
+document.getElementById('cosin').onclick = function() {
+hold = Number(pending);
+  oper = 'cosin'
+  updateValues();
+
+}
+document.getElementById('tan').onclick = function() {
+hold = Number(pending);
+  oper = 'tan'
+  updateValues();
+
+}
+document.getElementById('arcsin').onclick = function() {
+hold = Number(pending);
+  oper = 'arcsin'
+  updateValues();
+
+}
+document.getElementById('arccos').onclick = function() {
+hold = Number(pending);
+  oper = 'arccos'
+  updateValues();
+
+}
+document.getElementById('arctan').onclick = function() {
+hold = Number(pending);
+  oper = 'arctan'
+  updateValues();
 
 }
 document.getElementById('convertbase').onclick = function() {
@@ -134,6 +150,16 @@ document.getElementById('equals').onclick = function() {
   else if (oper === '-') result = hold - pending;
   else if (oper === 'x') result = hold * pending;
   else if (oper === '/') result = hold/pending;
+  else if (oper === 'square') result = pending*pending;
+  else if (oper === 'cube') result = pending*pending*pending;
+  else if (oper === 'squareroot') result = Math.sqrt(pending);
+  else if (oper === 'cuberoot') result = Math.cbrt(pending);
+  else if (oper === 'sin') result = Math.sin(pending);
+  else if (oper === 'cosin') result = Math.cos(pending);
+  else if (oper === 'tan') result = Math.tan(pending);
+  else if (oper === 'arcsin') result = Math.asin(pending);
+  else if (oper === 'arccos') result = Math.acos(pending);
+  else if (oper === 'arctan') result = Math.atan(pending);
   pending = String(result);
   hold = null;
   oper = null;
