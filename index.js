@@ -134,6 +134,43 @@ hold = Number(pending);
   updateValues();
 
 }
+document.getElementById('log').onclick = function() {
+hold = Number(pending);
+  oper = 'LN'
+  updateValues();
+
+}
+
+document.getElementById('factorial').onclick = function() {
+    hold = Number(pending);
+    oper = '!'
+    updateValues();
+
+}
+document.getElementById('e').onclick = function() {
+hold = Number(pending);
+  oper = 'e'
+  pending = Math.E;
+  updateValues();
+
+}
+document.getElementById('pi').onclick = function() {
+hold = Number(pending);
+  oper = 'PI'
+  pending = Math.PI;
+  updateValues();
+
+}
+document.getElementById('exp').onclick = function() {
+hold = Number(pending);
+
+  oper = '^'
+  pending = ''
+
+  updateValues();
+
+}
+
 document.getElementById('convertbase').onclick = function() {
   pending = document.getElementById("anybasenumber").value;
 console.log("convertbase");
@@ -160,6 +197,18 @@ document.getElementById('equals').onclick = function() {
   else if (oper === 'arcsin') result = Math.asin(pending);
   else if (oper === 'arccos') result = Math.acos(pending);
   else if (oper === 'arctan') result = Math.atan(pending);
+  else if (oper === 'LN') result = Math.log(pending);
+  else if (oper === 'e') result = Math.E;
+  else if (oper === 'PI') result = Math.PI;
+  else if (oper === '^') result = Math.pow(hold, pending);
+  else if (oper === '!') {
+  k = 1;
+  for(x = 1; x <= pending; x++) {
+    k = k*x;
+  }
+  result = k;
+}
+
   pending = String(result);
   hold = null;
   oper = null;
