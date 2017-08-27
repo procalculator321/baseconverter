@@ -1,11 +1,51 @@
 // index.js
-pending = '';
+var pending = '';
 var result = 0;
 var hold = null;
 var oper = null;
 var anybasenumber = null;
 var thebase = null;
+
+var X_value = "test";
+
+var evaluateX = function(x) {
+  var old_hold = hold;
+  var old_pending = pending;
+  var old_oper = oper;
+  var old_result = result;
+  if(pending === X_value) pending = String(x);
+  if(hold === X_value) hold = x;
+  evaluate();
+  var ret = result;
+  hold = old_hold;
+  pending = old_pending;
+  oper = old_oper;
+  result = old_result;
+  return ret;
+}
+
+
+var updateTable = function() {
+
+var tableHTML = "";
+if(thebase !== null) {
+
+
+
+for(var x = 0; x <= 100; x++) {
+  var res = evaluateX(x);
+  tableHTML+="<tr><td>" + x + "</td><td>" +  x.toString(document.getElementById("thebase").value) + "</td><td>"+res.toString(document.getElementById("thebase").value)+ '</td><td>' + res + "</td></tr>" 
+}
+
+document.getElementById("funcoutput").innerHTML = tableHTML;
+
+}
+}
 function updateValues() {
+  console.log(pending);
+  console.log(hold);
+  console.log(oper);
+  console.log(result);
   document.getElementById('res').innerText = result.toString(document.getElementById("thebase").value);
   document.getElementById('pend').innerText = pending.toString(document.getElementById("thebase").value);
   if(hold != null) {
@@ -14,7 +54,7 @@ function updateValues() {
   if(oper != null) {
     document.getElementById('op').innerText = oper.toString();
 }
-
+updateTable();
 }
 updateValues();
 
@@ -31,30 +71,37 @@ if(i%3===2) {
 
   }
 
-
-  document.getElementById("buttons").innerHTML=buttonHTML;
+    document.getElementById("buttons").innerHTML=buttonHTML;
+  }
+function parsePending() {
+  var anumber = pending;
+  pending = '';
+  if(anumber === X_value) return anumber;
+  else return Number(anumber);
 }
+
+
 var numpresser = function(num) {
   pending = pending + num;
   updateValues();
 }
 
 document.getElementById('decimal').onclick = function() {
-  hold = Number(pending);
+  hold = parsePending();
   oper = 'decimal'
   updateValues();
 
 }
 
 document.getElementById('addition').onclick = function() {
-  hold = Number(pending);
+  hold = parsePending();
   pending = '0'
   oper = '+'
   updateValues();
 
 }
 document.getElementById('subtraction').onclick = function() {
-  hold = Number(pending);
+  hold = parsePending();
   pending = '0'
   oper = '-'
   updateValues();
@@ -62,107 +109,107 @@ document.getElementById('subtraction').onclick = function() {
 }
 
 document.getElementById('multiplication').onclick = function() {
-  hold = Number(pending);
+  hold = parsePending();
   pending = '0'
   oper = 'x'
   updateValues();
 
 }
 document.getElementById('division').onclick = function() {
-  hold = Number(pending);
+  hold = parsePending();
   pending = '0'
   oper = '/'
   updateValues();
 }
   document.getElementById('square').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
     oper = 'square'
     updateValues();
 
 }
 document.getElementById('cube').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'cube'
   updateValues();
 
 }
 document.getElementById('squareroot').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'squareroot'
   updateValues();
 
 }
 document.getElementById('cuberoot').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'cuberoot'
   updateValues();
 
 }
 document.getElementById('sin').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'sin'
   updateValues();
 
 }
 document.getElementById('cosin').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'cosin'
   updateValues();
 
 }
 document.getElementById('tan').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'tan'
   updateValues();
 
 }
 document.getElementById('arcsin').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'arcsin'
   updateValues();
 
 }
 document.getElementById('arccos').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'arccos'
   updateValues();
 
 }
 document.getElementById('arctan').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'arctan'
   updateValues();
 
 }
 document.getElementById('log').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'LN'
   updateValues();
 
 }
 
 document.getElementById('factorial').onclick = function() {
-    hold = Number(pending);
+    hold = parsePending();
     oper = '!'
     updateValues();
 
 }
 document.getElementById('e').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'e'
   pending = Math.E;
   updateValues();
 
 }
 document.getElementById('pi').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
   oper = 'PI'
   pending = Math.PI;
   updateValues();
 
 }
 document.getElementById('exp').onclick = function() {
-hold = Number(pending);
+hold = parsePending();
 
   oper = '^'
   pending = ''
@@ -171,16 +218,23 @@ hold = Number(pending);
 
 }
 
+document.getElementById('variable').onclick = function() {
+  pending = X_value;
+  updateValues();
+}
+
 document.getElementById('convertbase').onclick = function() {
   pending = document.getElementById("anybasenumber").value;
 console.log("convertbase");
-buttonmaker(parseInt(document.getElementById("thebase").value, 10))
+thebase=parseInt(document.getElementById("thebase").value, 10);
+buttonmaker(thebase)
   updateValues();
 
 }
 
+function evaluate() {
 
-document.getElementById('equals').onclick = function() {
+
   pending = parseInt((pending), document.getElementById("thebase").value);
   if(hold === null || oper === null) return;
   else if (oper === '+')  result = hold + pending;
@@ -214,6 +268,8 @@ document.getElementById('equals').onclick = function() {
   oper = null;
   updateValues();
 }
+
+document.getElementById('equals').onclick =evaluate;
 document.getElementById('reset').onclick = function() {
   pending = ''
   holding = null

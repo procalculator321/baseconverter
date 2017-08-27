@@ -42,25 +42,12 @@
 <button id="log" title="natural logorithm">LN</button>
 <button id="e">e</button>
 <button id="pi" title="pi">Π</button>
-<button id="factorial" title="factorial">!</button>
 <br>
-<button id="variable" title="variable">x</button>
 <br>
 <hr/>
 <br>
 <input type="text" id="anybasenumber">number</input>
 <input type="text" value="10" id="thebase">numberbase</input>
-
-<table
-  <tr>
-  <th>base ten number</th>
-  <th>convertedbasenumber</br>
-    <th>convertedbasefunction</th>
-    <th>base10function</th>
-  </tr>
-  <tbody id="funcoutput">></tbody>
-</table>
 <script src="index.js"></script>
-
 </body>
 </html>

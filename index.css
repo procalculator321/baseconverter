@@ -11,10 +11,19 @@ body {
 #zero, #addition, #subtraction {
   color: blue;
 }
+
+#decimal, #multiplication, #division, #addition, #subtraction,
+#factorial, #sin, #cosin, #tan, #arcsin, #arccos, #arctan, #log,
+#e, #pi, #exp, #equals, #reset, #square, #cube, #squareroot,
+#cuberoot, #convertbase, #factorial {
+border-radius: 2em;
+
+}
+
 #pend, #holding, #res, #op {
 font-family: 'Roboto Slab', serif;
 border: 1.5px solid powderblue;
 }
 .numbutton {
-  width: 50px; 
+  width: 50px;
 }
