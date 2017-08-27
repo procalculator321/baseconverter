@@ -6,7 +6,9 @@ var oper = null;
 var anybasenumber = null;
 var thebase = null;
 
-var X_value = "test";
+var X_value = "testX";
+
+
 
 var evaluateX = function(x) {
   var old_hold = hold;
@@ -16,6 +18,7 @@ var evaluateX = function(x) {
   if(pending === X_value) pending = String(x);
   if(hold === X_value) hold = x;
   evaluate();
+  console.log(result, "cute kitten");
   var ret = result;
   hold = old_hold;
   pending = old_pending;
@@ -28,17 +31,19 @@ var evaluateX = function(x) {
 var updateTable = function() {
 
 var tableHTML = "";
-if(thebase !== null) {
+if(thebase !== null && oper !== null && hold !== null) {
+console.log("this is a test", thebase, oper, hold, pending, result);
 
 
-
-for(var x = 0; x <= 100; x++) {
+for(var x = 0; x <= 100; x ++) {
   var res = evaluateX(x);
-  tableHTML+="<tr><td>" + x + "</td><td>" +  x.toString(document.getElementById("thebase").value) + "</td><td>"+res.toString(document.getElementById("thebase").value)+ '</td><td>' + res + "</td></tr>" 
+  tableHTML+="<tr><td>" + x + "</td><td>" +  x.toString(document.getElementById("thebase").value) + "</td><td>"+res.toString(document.getElementById("thebase").value)+ '</td><td>' + res + "</td></tr>"
 }
 
 document.getElementById("funcoutput").innerHTML = tableHTML;
 
+} else {
+  console.log("testin");
 }
 }
 function updateValues() {
@@ -224,7 +229,6 @@ document.getElementById('variable').onclick = function() {
 }
 
 document.getElementById('convertbase').onclick = function() {
-  pending = document.getElementById("anybasenumber").value;
 console.log("convertbase");
 thebase=parseInt(document.getElementById("thebase").value, 10);
 buttonmaker(thebase)
